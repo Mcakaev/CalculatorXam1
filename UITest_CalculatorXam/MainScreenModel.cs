@@ -46,7 +46,7 @@ namespace UITest_CalculatorXam
             App.Tap(buttonPlus);
             return this;
         }
-        public MainScreenModel TapOnEgual()
+        public MainScreenModel TapOnEqual()
         {
             App.Tap(buttonEgual);
             return this;

@@ -21,7 +21,7 @@ namespace UITest_CalculatorXam
             _msModel.TapOnOne()
                 .TapOnPlus()
                 .TapOnTwo()
-                .TapOnEgual();
+                .TapOnEqual();
             Assert.AreEqual("3", _msModel.GetTextFromTextField());
         }
         
@@ -31,7 +31,7 @@ namespace UITest_CalculatorXam
             _msModel.TapOnThree()
                 .TapOnMult()
                 .TapOnFour()                         
-                .TapOnEgual();
+                .TapOnEqual();
             Assert.AreEqual("12", _msModel.GetTextFromTextField());
         }
         [Test]
@@ -40,7 +40,7 @@ namespace UITest_CalculatorXam
             _msModel.TapOnFive()
                 .TapOnDiv()
                 .TapOnSix()
-                .TapOnEgual();
+                .TapOnEqual();
             Assert.AreEqual("0,833333333333333", _msModel.GetTextFromTextField());
         }
         [Test]
@@ -49,7 +49,7 @@ namespace UITest_CalculatorXam
             _msModel.TapOnEight()
                 .TapOnMinus()
                 .TapOnSeven()
-                .TapOnEgual();
+                .TapOnEqual();
             Assert.AreEqual("1", _msModel.GetTextFromTextField());
         }
         [Test]
@@ -62,7 +62,7 @@ namespace UITest_CalculatorXam
                 .TapOnFour()
                 .TapOnPoint()
                 .TapOnThree()
-                .TapOnEgual();
+                .TapOnEqual();
             Assert.AreEqual("13,7", _msModel.GetTextFromTextField());
         }
         [Test]
@@ -77,6 +77,59 @@ namespace UITest_CalculatorXam
                 .TapOnThree()
                 .TapOnDel();
             Assert.AreEqual("0", _msModel.GetTextFromTextField());
+        }
+        [Test]
+        public void CheckFourOperation()
+        {
+            _msModel.TapOnNine()
+                .TapOnPlus()
+                .TapOnFour()
+                .TapOnMinus()
+                .TapOnThree()
+                .TapOnMult()
+                .TapOnFive()
+                .TapOnDiv()
+                .TapOnOne()
+                .TapOnZero()
+                .TapOnEqual();
+
+            Assert.AreEqual("5", _msModel.GetTextFromTextField());
+        }
+        [Test]
+        public void CheckDivOnZero()
+        {
+            _msModel.TapOnNine()
+                .TapOnDiv()
+                .TapOnZero()                
+                .TapOnEqual();
+            Assert.AreEqual("бесконечность", _msModel.GetTextFromTextField());
+        }
+        [Test]
+        public void CheckAllNumbers()
+        {
+            _msModel.TapOnOne()
+                .TapOnTwo()
+                .TapOnThree()
+                .TapOnFour()
+                .TapOnFive()
+                .TapOnSix()
+                .TapOnSeven()
+                .TapOnEight()
+                .TapOnNine()
+                .TapOnZero();
+            Assert.AreEqual("01234567890", _msModel.GetTextFromTextField());
+        }
+        [Test]
+        public void CheckDifferntFunction()
+        {
+            _msModel.TapOnOne()
+                .TapOnPlus()
+                .TapOnMinus()
+                .TapOnMult()
+                .TapOnDiv()
+                .TapOnOne()
+                .TapOnEqual();
+            Assert.AreEqual("1", _msModel.GetTextFromTextField());
         }
     }
 }
